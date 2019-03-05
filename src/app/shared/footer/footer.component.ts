@@ -1,0 +1,31 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-footer',
+  templateUrl: './footer.component.html',
+  styleUrls: ['./footer.component.css']
+})
+export class FooterComponent implements OnInit {
+  
+  public botones: any[]=[{
+    name: 'Boton 1'
+  },{
+    name: 'Boton 2'
+  },{
+    name: 'Boton 3'
+  }];
+
+  public promotion: boolean= true;
+  public color: boolean= false;
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  public aplicarPromocion(){
+    this.color= !this.color;
+    
+  }
+
+}
