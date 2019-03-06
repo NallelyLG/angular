@@ -1,3 +1,5 @@
 <div class="container">
-  <div class="row"><app-card></app-card></div>
+  <!--{{lista | json }}-->
+  <div class="row">
+    <app-card *ngFor="let item of lista"[articulo]="item"></app-card></div>
 </div>
