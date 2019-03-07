@@ -4,18 +4,30 @@
       <thead>
         <button (click)="nuevo(template)" class="btn btn-primary btn-xs pull-right"><b>+</b> NUEVO </button>
         <tr>
-          <th>ID</th>
+          <th>Nombre</th>
+          <th>Marca</th>
+          <th>Precio</th>
           <th>Title</th>
-          <th>Parent ID</th>
+          <th>Description</th>
+          <th>Promotion</th>
+          <th>Categoria</th>
+          <th>Url</th>
+          <th>Fecha</th>
           <th class="text-center">Action</th>
         </tr>
       </thead>
       <tr *ngFor="let art of articulos">
-        <td>{{art.id}}</td>
+        <td>{{art.nombre}}</td>
+        <td>{{art.marca}}</td>
+        <td>{{art.precio}}</td>
         <td>{{art.title}}</td>
         <td>{{art.description}}</td>
+        <td>{{art.promotion}}</td>
+        <td>{{art.categoria}}</td>
+        <td>{{art.url}}</td>
+        <td>{{art.fecha}}</td>
         <td class="text-center">
-            <button class='btn btn-info btn-xs'><span class="glyphicon glyphicon-edit"></span> Editar
+            <button (click)="editar(art, template)" class='btn btn-info btn-xs'><span class="glyphicon glyphicon-edit"></span> Editar
             </button> 
             <button class="btn btn-danger btn-xs"(click)="borrar(art)"><span class="glyphicon glyphicon-remove">
             </span> Borrar </button>
@@ -32,6 +44,55 @@
     </button>
   </div>
   <div class="modal-body">
+            <div *ngIf="formArticulo.valid" class="alert alert-success" role="alert">
+                El Formulario es Correcto
+              </div>
+            <div *ngIf="!formArticulo.valid" class="alert alert-danger" role="alert">
+                El Formulario es Invalido
+              </div>
+            <div [formGroup] ="formArticulo">
+              {{formArticulo.value | json}}
+              <label for="exampleInputEmail1">Nombre</label>
+              <input formControlName="nombre" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nombre">
+              <small *ngIf="formArticulo.get('nombre').errors?.required" id="emailHelp" class="form-text text-muted">El nombre es requerido</small>
+
+              <label for="exampleInputEmail1">Marca</label>
+              <input formControlName="marca" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Marca">
+              <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+
+              <label for="exampleInputEmail1">Precio</label>
+              <input formControlName="precio" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Precio">
+              <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+
+              <label for="exampleInputEmail1">Title</label>
+              <input formControlName="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Title">
+              <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+
+              <label for="exampleInputEmail1">Description</label>
+              <input formControlName="description" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Description">
+              <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+
+              <label for="exampleInputEmail1">Promotion</label>
+              <input formControlName="promotion" type="boolean" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Promotion">
+              <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+
+              <label for="exampleInputEmail1">Categoria</label>
+              <input formControlName="categoria" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Categoria">
+              <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+              
+              <label for="exampleInputEmail1">url</label>
+              <input formControlName="url" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="url">
+              <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+        
+              <label for="exampleInputEmail1">Fecha</label>
+              <input formControlName="fecha" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Fecha">
+              <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
     <button (click)="agregar()"> Agregar </button>
   </div>
 </ng-template>
