@@ -14,6 +14,14 @@ export class ArticulosService {
     public getArticulos(){
       return this.articulos;
     }
+
+    public get (id: number){
+      let articulo: Articulo= this.articulos.
+      find((item: Articulo) => {
+      return item.id ==id;
+      });
+      return articulo;
+    }
     public nuevo (articulo: Articulo){
       this.articulos.push(articulo);
     }
